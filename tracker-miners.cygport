@@ -1,0 +1,20 @@
+inherit gnome2
+
+NAME="tracker-miners"
+VERSION=2.0.4
+RELEASE=1
+CATEGORY="GNOME"
+SUMMARY="Tracker core miners"
+DESCRIPTION="Tracker is a powerful desktop-neutral first class object
+database, tag/metadata database, search tool and indexer.  It consists of a
+common object database that allows entities to have an almost infinte number
+of properties, metadata (both embedded/harvested as well as user definable),
+a comprehensive database of keywords/tags and links to other entities."
+
+PATCH_URI="
+	2.0.4-cygwin-gmodule.patch
+	2.0.4-no-undefined.patch
+"
+
+CYGCONF_ARGS="--enable-generic-media-extractor=GStreamer"
+MAKEOPTS+=" systemd_user_DATA= "

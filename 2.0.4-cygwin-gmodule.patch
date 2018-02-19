@@ -1,0 +1,19 @@
+--- origsrc/tracker-miners-2.0.4/src/tracker-extract/tracker-extract.c	2017-12-16 05:27:16.000000000 -0600
++++ src/tracker-miners-2.0.4/src/tracker-extract/tracker-extract.c	2018-02-12 16:57:17.636817300 -0600
+@@ -439,11 +439,14 @@ filter_module (TrackerExtract *extract,
+ 	/* Module name is the full path to it */
+ 	module_basename = g_path_get_basename (g_module_name (module));
+ 
+-	if (g_str_has_prefix (priv->force_module, "lib") &&
+-	    g_str_has_suffix (priv->force_module, "." G_MODULE_SUFFIX)) {
++	if (g_str_has_suffix (priv->force_module, "." G_MODULE_SUFFIX)) {
+ 		filter_name = g_strdup (priv->force_module);
+ 	} else {
++#ifdef __CYGWIN__
++		filter_name = g_strdup_printf ("cygextract-%s.dll",
++#else
+ 		filter_name = g_strdup_printf ("libextract-%s.so",
++#endif
+ 		                               priv->force_module);
+ 	}
+ 
