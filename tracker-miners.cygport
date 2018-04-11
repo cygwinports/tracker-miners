@@ -2,7 +2,7 @@ inherit gnome2
 
 NAME="tracker-miners"
 VERSION=2.0.4
-RELEASE=2
+RELEASE=3
 CATEGORY="GNOME"
 SUMMARY="Tracker core miners"
 DESCRIPTION="Tracker is a powerful desktop-neutral first class object
